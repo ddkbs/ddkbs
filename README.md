@@ -1,6 +1,6 @@
-Hi, I'm David.<br>
-I build interfaces, productivity tools and automations, mostly around AI.<br>
-Public right now: [Sidera](https://github.com/ddkbs/sidera) and [Sketchy](https://github.com/ddkbs/sketchy).<br>
-Most of my projects are private. DM for private stuff.
+hey, i'm david 👋<br>
+i build the glue between AI and everything else: APIs, MCP servers, automations.<br>
+mostly productivity tools. sometimes startups. occasionally both.<br>
+public: [sidera](https://github.com/ddkbs/sidera), [sketchy](https://github.com/ddkbs/sketchy). the good stuff is private, DM for private stuff.
 
 <img src="assets/wave.svg" alt="" width="100%">
