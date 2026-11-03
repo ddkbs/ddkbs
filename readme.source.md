@@ -25,7 +25,47 @@ Most of my projects are private. DM for private stuff.
       width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
       background: '#000000', border: '1px solid #222222', borderRadius: 16,
       padding: 28, fontFamily: 'Inter', color: '#ffffff',
+      position: 'relative', overflow: 'hidden',
     }}>
+      <style>
+        {`
+          @keyframes sweep {
+            0% { transform: translateX(-260px); }
+            60%, 100% { transform: translateX(1120px); }
+          }
+          @keyframes drift {
+            0%, 100% { transform: translateX(0px); opacity: 0.6; }
+            50% { transform: translateX(420px); opacity: 1; }
+          }
+          @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+          }
+          #sweep-top { animation: sweep 6s ease-in-out infinite; }
+          #sweep-bottom { animation: sweep 6s ease-in-out 3s infinite; }
+          #glow { animation: drift 14s ease-in-out infinite; }
+          #dot { animation: pulse 2.4s ease-in-out infinite; }
+        `}
+      </style>
+
+      <svg width="860" height="300" style={{ position: 'absolute', top: 0, left: 0 }}>
+        <defs>
+          <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.7)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+          </linearGradient>
+          <radialGradient id="soft" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.07)" />
+            <stop offset="70%" stopColor="rgba(255,255,255,0)" />
+          </radialGradient>
+        </defs>
+        <ellipse id="glow" cx="160" cy="300" rx="320" ry="150" fill="url(#soft)" />
+        <rect id="sweep-top" x="0" y="0" width="240" height="1" fill="url(#line)" />
+        <rect id="sweep-bottom" x="0" y="298" width="240" height="1" fill="url(#line)" />
+        <circle id="dot" cx="70" cy="70" r="5" fill="#3fb950" stroke="#000000" strokeWidth="2.5" />
+      </svg>
+
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <img src={github.user.avatarUrl} width={48} height={48} style={{ borderRadius: 24, border: '1px solid #333333' }} />
