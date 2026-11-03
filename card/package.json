@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsx src/render.tsx ../assets/wave.svg",
+    "build": "tsx src/render.tsx ../assets/heat.svg",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
