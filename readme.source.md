@@ -1,91 +1,76 @@
-```aura width=860 height=200 link="https://davidkubus.dev"
-<div style={{
-  width: '100%', height: '100%', background: '#08090a',
-  display: 'flex', alignItems: 'center', fontFamily: 'Inter',
-  position: 'relative', overflow: 'hidden', borderRadius: 16,
-  border: '1px solid rgba(52,211,153,0.18)'
-}}>
+Hi, I'm David.
 
-  <style>
-    {`
-      @keyframes drift-a {
-        0%, 100% { transform: translateX(0px); opacity: 0.8; }
-        50% { transform: translateX(320px); opacity: 1; }
-      }
-      @keyframes drift-b {
-        0%, 100% { transform: translateX(0px); opacity: 0.7; }
-        50% { transform: translateX(-260px); opacity: 1; }
-      }
-      @keyframes drift-c {
-        0%, 100% { transform: translateX(0px); opacity: 0.9; }
-        50% { transform: translateX(200px); opacity: 0.6; }
-      }
-      #glow-1 { animation: drift-a 9s ease-in-out infinite; }
-      #glow-2 { animation: drift-b 12s ease-in-out infinite; }
-      #glow-3 { animation: drift-c 10s ease-in-out infinite; }
-      #glow-4 { animation: drift-a 14s ease-in-out infinite reverse; }
-    `}
-  </style>
-
-  <svg width="860" height="200" style={{ position: 'absolute', top: 0, left: 0 }}>
-    <defs>
-      <radialGradient id="g1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(16,185,129,0.8)" />
-        <stop offset="45%" stopColor="rgba(5,150,105,0.35)" />
-        <stop offset="70%" stopColor="rgba(5,150,105,0)" />
-      </radialGradient>
-      <radialGradient id="g2" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(20,184,166,0.7)" />
-        <stop offset="50%" stopColor="rgba(13,148,136,0.28)" />
-        <stop offset="70%" stopColor="rgba(13,148,136,0)" />
-      </radialGradient>
-      <radialGradient id="g3" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(52,211,153,0.55)" />
-        <stop offset="70%" stopColor="rgba(52,211,153,0)" />
-      </radialGradient>
-      <radialGradient id="g4" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="rgba(6,182,212,0.5)" />
-        <stop offset="70%" stopColor="rgba(6,182,212,0)" />
-      </radialGradient>
-    </defs>
-
-    <ellipse id="glow-1" cx="200" cy="215" rx="260" ry="180" fill="url(#g1)" />
-    <ellipse id="glow-2" cx="520" cy="220" rx="220" ry="160" fill="url(#g2)" />
-    <ellipse id="glow-3" cx="380" cy="210" rx="180" ry="140" fill="url(#g3)" />
-    <ellipse id="glow-4" cx="720" cy="225" rx="160" ry="130" fill="url(#g4)" />
-  </svg>
-
-  <div style={{
-    position: 'absolute', left: 48, top: 52, width: 96, height: 96,
-    borderRadius: 48, background: 'linear-gradient(135deg, #34d399, #0e7490)',
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-  }}>
-    <img src={github.user.avatarUrl} width={88} height={88} style={{ borderRadius: 44 }} />
-  </div>
-
-  <div style={{ display: 'flex', flexDirection: 'column', marginLeft: 168, gap: 8 }}>
-    <div style={{ display: 'flex', fontSize: 38, fontWeight: 800, color: '#ffffff', letterSpacing: '-1px', lineHeight: 1 }}>
-      David Kubus
-    </div>
-    <div style={{ display: 'flex', fontSize: 15, color: 'rgba(167,243,208,0.8)', fontWeight: 400, letterSpacing: '0.3px' }}>
-      Building interfaces, tools and automations that save time
-    </div>
-    <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
-      {['APIs & MCP', 'Productivity', 'Automation', 'Startups'].map(function (tag) {
-        return (
-          <div key={tag} style={{
-            display: 'flex', padding: '4px 12px', borderRadius: 20,
-            background: 'rgba(16,185,129,0.14)', border: '1px solid rgba(52,211,153,0.3)',
-            color: 'rgba(209,250,229,0.88)', fontSize: 12, fontWeight: 600,
-          }}>{tag}</div>
-        );
-      })}
-    </div>
-  </div>
-</div>
-```
-
-**[Sidera](https://github.com/ddkbs/sidera)** · local-first visual notes for macOS<br>
-**[Sketchy](https://github.com/ddkbs/sketchy)** · hand-drawn diagrams for Claude, via MCP
+I build interfaces, productivity tools and automations, mostly around AI. APIs and MCP servers that connect things, tools that save time, and the occasional startup idea that gets out of hand.
 
 Most of my projects are private. DM for private stuff.
+
+```aura width=860 height=300 link="https://github.com/ddkbs?tab=repositories"
+(function () {
+  var stats = [
+    { label: 'Stars', value: github.stats.totalStars },
+    { label: 'Forks', value: github.stats.totalForks },
+    { label: 'On GitHub since', value: github.user.createdAt.slice(0, 4) },
+  ];
+  // Own short descriptions; stars and language stay live from the API
+  var blurbs = {
+    sketchy: 'Claude explains, Sketchy draws. Hand-drawn diagrams right in the chat.',
+    sidera: 'Local-first visual notes for macOS. Every action is an MCP tool.',
+  };
+  var repos = github.repos
+    .filter(function (r) { return r.name !== 'awesome-mcp-servers'; })
+    .slice(0, 2);
+
+  return (
+    <div style={{
+      width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
+      background: '#000000', border: '1px solid #222222', borderRadius: 16,
+      padding: 28, fontFamily: 'Inter', color: '#ffffff',
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <img src={github.user.avatarUrl} width={48} height={48} style={{ borderRadius: 24, border: '1px solid #333333' }} />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', fontSize: 20, fontWeight: 700, letterSpacing: '-0.5px' }}>David Kubus</div>
+            <div style={{ display: 'flex', fontSize: 13, color: '#888888' }}>@{github.user.login}</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 36 }}>
+          {stats.map(function (s) {
+            return (
+              <div key={s.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                <div style={{ display: 'flex', fontSize: 26, fontWeight: 700, letterSpacing: '-1px' }}>{String(s.value)}</div>
+                <div style={{ display: 'flex', fontSize: 11, color: '#777777', letterSpacing: '1.5px' }}>{s.label.toUpperCase()}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', height: 1, background: '#1c1c1c', marginTop: 24, marginBottom: 20 }} />
+
+      <div style={{ display: 'flex', gap: 16, flex: 1 }}>
+        {repos.map(function (r) {
+          return (
+            <div key={r.name} style={{
+              display: 'flex', flexDirection: 'column', flex: 1,
+              background: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: 12, padding: 18,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', fontSize: 16, fontWeight: 600 }}>{r.name}</div>
+                <div style={{ display: 'flex', fontSize: 13, color: '#888888' }}>{r.stars ? r.stars + (r.stars === 1 ? ' star' : ' stars') : ''}</div>
+              </div>
+              <div style={{ display: 'flex', marginTop: 8, fontSize: 13, lineHeight: 1.5, color: '#999999' }}>
+                {blurbs[r.name] || r.description}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 'auto', fontSize: 12, color: '#777777' }}>
+                <div style={{ display: 'flex', width: 8, height: 8, borderRadius: 4, background: '#3178c6' }} />
+                {r.language || 'Code'}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+})()
+```
