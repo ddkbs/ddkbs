@@ -1,9 +1,11 @@
-// Renders the Flow component to a static SVG file for the profile README.
+// Renders the Wave component to a static SVG file for the profile README.
 // Usage: tsx src/render.tsx <out.svg>
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
-import Flow from "./Flow";
+import Wave from "./Wave";
 
-const out = process.argv[2] ?? "flow.svg";
-writeFileSync(out, renderToStaticMarkup(<Flow />) + "\n");
+const out = process.argv[2] ?? "wave.svg";
+mkdirSync(dirname(out), { recursive: true });
+writeFileSync(out, renderToStaticMarkup(<Wave />) + "\n");
 console.log(`wrote ${out}`);
