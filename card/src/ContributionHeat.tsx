@@ -1,6 +1,7 @@
 // The GitHub contribution graph drawn as the heat grid from davidkubus.dev.
-// Each day rests at a glow that matches its contribution level; every few
-// seconds a pulse sweeps across, heats the cells up through the "aurora"
+// The grid starts dark and the first pulse reveals it: each day then rests at
+// a glow that matches its contribution level, and every few seconds a pulse
+// sweeps across again, heats the cells up through the "aurora"
 // palette and lets them cool back down with the site's cooling curve.
 // GitHub shows READMEs as images without JS, so all of it is CSS keyframes.
 
@@ -12,8 +13,8 @@ const PAD = 20;
 const FOOT = 34;
 
 const COOL = 0.85; // heat lost per second, same as the site
-const PERIOD = 8; // seconds between pulses
-const SWEEP = 3.2; // seconds the pulse takes to cross the grid
+const PERIOD = 5; // seconds between pulses
+const SWEEP = 1.6; // seconds the pulse takes to cross the grid
 const RAMP = 0.12; // seconds for a cell to heat up
 
 type Stop = [stop: number, r: number, g: number, b: number];
@@ -63,7 +64,7 @@ function keyframes(name: string, { rest, peak }: { rest: number; peak: number })
     frames.push(`${pct(s)}% { fill: ${fill(v)}; }`);
   }
   frames.push(`100% { fill: ${fill(rest)}; }`);
-  return `@keyframes ${name} { ${frames.join(" ")} }\n.${name} { fill: ${fill(rest)}; animation: ${name} ${PERIOD}s linear infinite; }`;
+  return `@keyframes ${name} { ${frames.join(" ")} }\n.${name} { fill: transparent; animation: ${name} ${PERIOD}s linear infinite; }`;
 }
 
 // Deterministic per-cell jitter so the pulse front looks scattered, not ruler-straight
@@ -96,7 +97,7 @@ export default function ContributionHeat({ weeks, total }: { weeks: Day[][]; tot
           y={PAD + row * CELL + 1}
           width={CELL - 1}
           height={CELL - 1}
-          style={{ animationDelay: `${(delay - PERIOD).toFixed(2)}s` }}
+          style={{ animationDelay: `${(0.3 + delay).toFixed(2)}s` }}
         >
           <title>{`${d.contributionCount} on ${d.date}`}</title>
         </rect>
