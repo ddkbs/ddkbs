@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsx src/render.tsx ../assets/heat.svg ddkbs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "gallery": "tsx src/render.tsx out/gallery.svg ddkbs gallery"
   },
   "dependencies": {
     "react": "^19.3.1",
