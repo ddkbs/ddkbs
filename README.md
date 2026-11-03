@@ -1,6 +1,6 @@
-hey, i'm david 👋<br>
-i build the glue between AI and everything else: APIs, MCP servers, automations.<br>
-mostly productivity tools. sometimes startups. occasionally both.<br>
-public: [sidera](https://github.com/ddkbs/sidera), [sketchy](https://github.com/ddkbs/sketchy). the good stuff is private, DM for private stuff.
+Hey, I'm David, a student from Germany.<br>
+I mostly build AI stuff like MCPs, APIs, automations and productivity tools, but also real-world things like PLC control systems.<br>
+Currently trying to get deeper into infra and inference.<br>
+Most of it is private, DM for private stuff.
 
 <img src="assets/heat.svg" alt="" width="100%">
