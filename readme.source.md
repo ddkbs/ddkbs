@@ -1,30 +1,21 @@
-Hi, I'm David.
-
-I build interfaces, productivity tools and automations, mostly around AI. APIs and MCP servers that connect things, tools that save time, and the occasional startup idea that gets out of hand.
-
+Hi, I'm David.<br>
+I build interfaces, productivity tools and automations, mostly around AI.<br>
+Public right now: [Sidera](https://github.com/ddkbs/sidera) and [Sketchy](https://github.com/ddkbs/sketchy).<br>
 Most of my projects are private. DM for private stuff.
 
-```aura width=860 height=300 link="https://github.com/ddkbs?tab=repositories"
+```aura width=860 height=96 link="https://github.com/ddkbs?tab=repositories"
 (function () {
   var stats = [
     { label: 'Stars', value: github.stats.totalStars },
     { label: 'Forks', value: github.stats.totalForks },
-    { label: 'On GitHub since', value: github.user.createdAt.slice(0, 4) },
+    { label: 'Since', value: github.user.createdAt.slice(0, 4) },
   ];
-  // Own short descriptions; stars and language stay live from the API
-  var blurbs = {
-    sketchy: 'Claude explains, Sketchy draws. Hand-drawn diagrams right in the chat.',
-    sidera: 'Local-first visual notes for macOS. Every action is an MCP tool.',
-  };
-  var repos = github.repos
-    .filter(function (r) { return r.name !== 'awesome-mcp-servers'; })
-    .slice(0, 2);
 
   return (
     <div style={{
-      width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
-      background: '#000000', border: '1px solid #222222', borderRadius: 16,
-      padding: 28, fontFamily: 'Inter', color: '#ffffff',
+      width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      background: '#000000', border: '1px solid #222222', borderRadius: 14,
+      padding: '0 24px', fontFamily: 'Inter', color: '#ffffff',
       position: 'relative', overflow: 'hidden',
     }}>
       <style>
@@ -33,79 +24,43 @@ Most of my projects are private. DM for private stuff.
             0% { transform: translateX(-260px); }
             60%, 100% { transform: translateX(1120px); }
           }
-          @keyframes drift {
-            0%, 100% { transform: translateX(0px); opacity: 0.6; }
-            50% { transform: translateX(420px); opacity: 1; }
-          }
           @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.35; }
           }
           #sweep-top { animation: sweep 6s ease-in-out infinite; }
           #sweep-bottom { animation: sweep 6s ease-in-out 3s infinite; }
-          #glow { animation: drift 14s ease-in-out infinite; }
           #dot { animation: pulse 2.4s ease-in-out infinite; }
         `}
       </style>
 
-      <svg width="860" height="300" style={{ position: 'absolute', top: 0, left: 0 }}>
+      <svg width="860" height="96" style={{ position: 'absolute', top: 0, left: 0 }}>
         <defs>
           <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="rgba(255,255,255,0)" />
             <stop offset="50%" stopColor="rgba(255,255,255,0.7)" />
             <stop offset="100%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
-          <radialGradient id="soft" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.07)" />
-            <stop offset="70%" stopColor="rgba(255,255,255,0)" />
-          </radialGradient>
         </defs>
-        <ellipse id="glow" cx="160" cy="300" rx="320" ry="150" fill="url(#soft)" />
         <rect id="sweep-top" x="0" y="0" width="240" height="1" fill="url(#line)" />
-        <rect id="sweep-bottom" x="0" y="298" width="240" height="1" fill="url(#line)" />
-        <circle id="dot" cx="70" cy="70" r="5" fill="#3fb950" stroke="#000000" strokeWidth="2.5" />
+        <rect id="sweep-bottom" x="0" y="94" width="240" height="1" fill="url(#line)" />
+        <circle id="dot" cx="62" cy="63" r="4.5" fill="#3fb950" stroke="#000000" strokeWidth="2.5" />
       </svg>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <img src={github.user.avatarUrl} width={48} height={48} style={{ borderRadius: 24, border: '1px solid #333333' }} />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', fontSize: 20, fontWeight: 700, letterSpacing: '-0.5px' }}>David Kubus</div>
-            <div style={{ display: 'flex', fontSize: 13, color: '#888888' }}>@{github.user.login}</div>
-          </div>
-        </div>
-        <div style={{ display: 'flex', gap: 36 }}>
-          {stats.map(function (s) {
-            return (
-              <div key={s.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                <div style={{ display: 'flex', fontSize: 26, fontWeight: 700, letterSpacing: '-1px' }}>{String(s.value)}</div>
-                <div style={{ display: 'flex', fontSize: 11, color: '#777777', letterSpacing: '1.5px' }}>{s.label.toUpperCase()}</div>
-              </div>
-            );
-          })}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+        <img src={github.user.avatarUrl} width={44} height={44} style={{ borderRadius: 22, border: '1px solid #333333' }} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', fontSize: 18, fontWeight: 700, letterSpacing: '-0.4px' }}>David Kubus</div>
+          <div style={{ display: 'flex', fontSize: 12, color: '#888888' }}>@{github.user.login}</div>
         </div>
       </div>
 
-      <div style={{ display: 'flex', height: 1, background: '#1c1c1c', marginTop: 24, marginBottom: 20 }} />
-
-      <div style={{ display: 'flex', gap: 16, flex: 1 }}>
-        {repos.map(function (r) {
+      <div style={{ display: 'flex', gap: 32 }}>
+        {stats.map(function (s) {
           return (
-            <div key={r.name} style={{
-              display: 'flex', flexDirection: 'column', flex: 1,
-              background: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: 12, padding: 18,
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', fontSize: 16, fontWeight: 600 }}>{r.name}</div>
-                <div style={{ display: 'flex', fontSize: 13, color: '#888888' }}>{r.stars ? r.stars + (r.stars === 1 ? ' star' : ' stars') : ''}</div>
-              </div>
-              <div style={{ display: 'flex', marginTop: 8, fontSize: 13, lineHeight: 1.5, color: '#999999' }}>
-                {blurbs[r.name] || r.description}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 'auto', fontSize: 12, color: '#777777' }}>
-                <div style={{ display: 'flex', width: 8, height: 8, borderRadius: 4, background: '#3178c6' }} />
-                {r.language || 'Code'}
-              </div>
+            <div key={s.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <div style={{ display: 'flex', fontSize: 22, fontWeight: 700, letterSpacing: '-0.8px' }}>{String(s.value)}</div>
+              <div style={{ display: 'flex', fontSize: 10, color: '#777777', letterSpacing: '1.5px' }}>{s.label.toUpperCase()}</div>
             </div>
           );
         })}
