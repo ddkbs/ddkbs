@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsx src/render.tsx ../assets/heat.svg ddkbs",
+    "build": "tsx src/render.tsx ../assets/heat.svg ddkbs loop",
     "typecheck": "tsc --noEmit",
     "gallery": "tsx src/render.tsx out/gallery.svg ddkbs gallery"
   },
